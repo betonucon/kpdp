@@ -34,6 +34,15 @@ Route::group(['middleware'    => 'auth'],function(){
     Route::post('/news/simpan_ubah', 'NewsController@simpan_ubah');
 });
 Route::group(['middleware'    => 'auth'],function(){
+    Route::get('/struktur', 'StrukturController@index');
+    Route::get('/struktur/ubah', 'StrukturController@ubah');
+    Route::get('/struktur/hapus', 'StrukturController@hapus');
+    Route::get('/struktur/hapus_gambar', 'StrukturController@hapus_gambar');
+    Route::get('/struktur/view_data', 'StrukturController@view_data');
+    Route::post('/struktur/simpan', 'StrukturController@simpan');
+    Route::post('/struktur/simpan_ubah', 'StrukturController@simpan_ubah');
+});
+Route::group(['middleware'    => 'auth'],function(){
     Route::get('/barner', 'BarnerController@index');
     Route::get('/barner/ubah', 'BarnerController@ubah');
     Route::get('/barner/hapus', 'BarnerController@hapus');
