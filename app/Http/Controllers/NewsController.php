@@ -132,6 +132,7 @@ class NewsController extends Controller
                     echo'ok';
                 }else{
                     echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Upload gagal</p>';
+                    console.log(error);
                 }
             }else{
                 echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Ukuran file max 200kb</br>- Type file harus gambar </br> - Dengan Lebar dan tinggi 1000X529</p>';
