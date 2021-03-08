@@ -1,7 +1,7 @@
 <?php
 
 function link_html(){
-    $data='';
+    $data='http://admin.kreasiteknologi.com/';
 
     return $data;
 }
