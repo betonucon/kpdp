@@ -39,7 +39,7 @@
       </div>
       <div class="modal-body">
           <div id="notif"></div>
-          <form method="get" id="my_simpan">
+          <form method="post" action="{{url('/news/simpan')}}" id="my_simpan">
             @csrf
             <div class="form-group">
               <label>Judul</label>
@@ -57,6 +57,7 @@
               <label>Gambar</label>
               <input type="file" name="file" class="form-control"  placeholder="Isi disini">
             </div>
+            <input type="submit">
           </form>
       </div>
       <div class="modal-footer">
