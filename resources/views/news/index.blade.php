@@ -39,7 +39,7 @@
       </div>
       <div class="modal-body">
           <div id="notif"></div>
-          <form method="post" action="{{url('/news/simpan')}}" id="my_simpan">
+          <form method="post" action="{{url('/news/simpan')}}" enctype="multipart/form-data" id="my_simpan">
             @csrf
             <div class="form-group">
               <label>Judul</label>
