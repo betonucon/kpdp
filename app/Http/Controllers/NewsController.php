@@ -117,7 +117,7 @@ class NewsController extends Controller
             $filename=date('Ymdhis').'.'.$tipe[1];
             $lokasi=link_html().'file/news/';
             // if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
-            if($tipe[0]=='image' && $size<=198640){
+            if($tipe[0]=='image'){
                 if(move_uploaded_file($asli, $lokasi.$filename)){
                     $data               = New News;
                     $data->name         = $request->name;
