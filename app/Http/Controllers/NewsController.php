@@ -101,7 +101,7 @@ class NewsController extends Controller
         echo 'ok';
     }
     public function simpan(request $request){
-        error_reporting(0);
+        //error_reporting(0);
         if (trim($request->name) == '') {$error[] = '- Isi Judul Berita';}
         if (trim($request->isi) == '') {$error[] = '- Isi Keterangan berita';}
         if (trim($request->file) == '') {$error[] = '- Pilih Gambar';}
@@ -115,9 +115,9 @@ class NewsController extends Controller
             $ukuran=getimagesize($_FILES["file"]['tmp_name']);
             $tipe=explode('/',$_FILES['file']['type']);
             $filename=date('Ymdhis').'.'.$tipe[1];
-            $lokasi=link_html().'file/news/';
+            $lokasi='/var/www/html/webkpdp-admin/public/file/news/';
             // if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
-            if($tipe[0]=='image' && $size<=198640){
+            //if($tipe[0]=='image' && $size<=198640){
                 if(move_uploaded_file($asli, $lokasi.$filename)){
                     $data               = New News;
                     $data->name         = $request->name;
@@ -129,13 +129,13 @@ class NewsController extends Controller
                     $data->gambar       = $filename;
                     $data->save();
     
-                    echo'ok';
-                }else{
-                    echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Upload gagal</p>';
-                }
-            }else{
-                echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Ukuran file max 200kb</br>- Type file harus gambar </br> - Dengan Lebar dan tinggi '.$size.'</p>';
-            }
+                  }  //echo'ok';
+                //}else{
+                //    echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Upload gagal</p>';
+                //}
+            //}else{
+              //  echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Ukuran file max 200kb</br>- Type file harus gambar </br> - Dengan Lebar dan tinggi '.$size.'</p>';
+            //}
 
         }
     }
