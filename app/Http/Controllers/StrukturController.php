@@ -38,7 +38,7 @@ class StrukturController extends Controller
                 if($data['gambar']==''){
                     echo'<input type="file" name="file" class="form-control"  placeholder="Isi disini">';
                 }else{
-                    echo'<img src="'.url(link_html().'file/struktur/'.$data['gambar']).'" class="gambar-news">
+                    echo'<img src="'.url(link_direktory().'file/struktur/'.$data['gambar']).'" class="gambar-news">
                     <span class="btn btn-danger btn-xs" onclick="hapus_gambar('.$data['id'].')"><i class="fa fa-remove"></i> Hapus</span>';
                 }echo'
                 
@@ -121,7 +121,7 @@ class StrukturController extends Controller
             $ukuran=getimagesize($_FILES["file"]['tmp_name']);
             $tipe=explode('/',$_FILES['file']['type']);
             $filename=date('Ymdhis').'.'.$tipe[1];
-            $lokasi=link_html().'file/struktur/';
+            $lokasi=link_direktory().'file/struktur/';
             if($tipe[0]=='image' && $size<=8000000 && $ukuran[0]==160 && $ukuran[1]==231){
             
                 if(move_uploaded_file($asli, $lokasi.$filename)){
@@ -167,7 +167,7 @@ class StrukturController extends Controller
                 $ukuran=getimagesize($_FILES["file"]['tmp_name']);
                 $tipe=explode('/',$_FILES['file']['type']);
                 $filename=date('Ymdhis').'.'.$tipe[1];
-                $lokasi=link_html().'file/struktur/';
+                $lokasi=link_direktory().'file/struktur/';
                 // if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
                 if($tipe[0]=='image' && $size<=8000000 && $ukuran[0]==1170 && $ukuran[1]==500){
                     if(move_uploaded_file($asli, $lokasi.$filename)){
