@@ -6,6 +6,12 @@ function link_html(){
     return $data;
 }
 
+function link_direktory(){
+    $data='/var/www/html/webkpdp-admin/public/';
+
+    return $data;
+}
+
 function about($id){
     $data=App\About::where('kategori',$id)->first();
     return $data;
