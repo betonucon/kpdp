@@ -82,6 +82,7 @@
           <form method="get" id="my_simpan_ubah">
             @csrf
             <div id="view_ubah"></div>
+	    
           </form>
       </div>
       <div class="modal-footer">

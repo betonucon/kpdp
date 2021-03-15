@@ -1,12 +1,12 @@
 <?php
 
 function link_html(){
-    $data='http://admin.kreasiteknologi.com';
+    $data='http://admin.kreasiteknologi.com/';
 
     return $data;
 }
 
-function link_direktory(){
+function link_directory(){
     $data='/var/www/html/webkpdp-admin/public/';
 
     return $data;

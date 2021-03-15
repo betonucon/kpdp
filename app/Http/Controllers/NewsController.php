@@ -34,7 +34,7 @@ class NewsController extends Controller
                 if($data['gambar']==''){
                     echo'<input type="file" name="file" class="form-control"  placeholder="Isi disini">';
                 }else{
-                    echo'<img src="'.url(link_direktory().'file/news/'.$data['gambar']).'" class="gambar-news">
+                    echo'<img src="'.url(link_html().'file/news/'.$data['gambar']).'" class="gambar-news">
                     <span class="btn btn-danger btn-xs" onclick="hapus_gambar('.$data['id'].')"><i class="fa fa-remove"></i> Hapus</span>';
                 }echo'
                 
@@ -101,7 +101,7 @@ class NewsController extends Controller
         echo 'ok';
     }
     public function simpan(request $request){
-        error_reporting(0);
+        //error_reporting(0);
         if (trim($request->name) == '') {$error[] = '- Isi Judul Berita';}
         if (trim($request->isi) == '') {$error[] = '- Isi Keterangan berita';}
         if (trim($request->file) == '') {$error[] = '- Pilih Gambar';}
@@ -115,8 +115,8 @@ class NewsController extends Controller
             $ukuran=getimagesize($_FILES["file"]['tmp_name']);
             $tipe=explode('/',$_FILES['file']['type']);
             $filename=date('Ymdhis').'.'.$tipe[1];
-            $lokasi='/var/www/html/webkpdp-admin/public/file/news/';
-            if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
+            $lokasi=link_directory().'file/news/';
+            //if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
             if($tipe[0]=='image' && $size<=198640){
                 if(move_uploaded_file($asli, $lokasi.$filename)){
                     $data               = New News;
@@ -140,7 +140,7 @@ class NewsController extends Controller
                 echo '<p style="font-size:12px;padding:5px;background:#d1ffae"><b>Error</b>: <br />- Ukuran file max 200kb</br>- Type file harus gambar </br> - Dengan Lebar dan tinggi '.$size.'</p>';
             }
 
-        }
+        
     }
     }
     public function simpan_ubah(request $request){
@@ -166,8 +166,8 @@ class NewsController extends Controller
                 $ukuran=getimagesize($_FILES["file"]['tmp_name']);
                 $tipe=explode('/',$_FILES['file']['type']);
                 $filename=date('Ymdhis').'.'.$tipe[1];
-                $lokasi=link_direktory().'file/news/';
-                if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
+                $lokasi=link_directory().'file/news/';
+                //if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
                 if($tipe[0]=='image' && $size<=198640){
                     if(move_uploaded_file($asli, $lokasi.$filename)){
                         $data               = News::find($request->id);
@@ -186,7 +186,7 @@ class NewsController extends Controller
                 }
             }
 
-            }
+            
         }
 
     }

@@ -35,7 +35,7 @@ class PengumumanController extends Controller
                 if($data['gambar']==''){
                     echo'<input type="file" name="file" class="form-control"  placeholder="Isi disini">';
                 }else{
-                    echo'<img src="'.url(link_direktory().'file/barner/'.$data['gambar']).'" class="gambar-news">
+                    echo'<img src="'.url(link_html().'file/barner/'.$data['gambar']).'" class="gambar-news">
                     <span class="btn btn-danger btn-xs" onclick="hapus_gambar('.$data['id'].')"><i class="fa fa-remove"></i> Hapus</span>';
                 }echo'
                 
@@ -102,7 +102,7 @@ class PengumumanController extends Controller
         echo 'ok';
     }
     public function simpan(request $request){
-        error_reporting(0);
+        //error_reporting(0);
         if (trim($request->name) == '') {$error[] = '- Isi Judul Berita';}
         if (trim($request->isi) == '') {$error[] = '- Isi Keterangan berita';}
         if (trim($request->file) == '') {$error[] = '- Pilih Gambar';}
@@ -116,7 +116,7 @@ class PengumumanController extends Controller
             $ukuran=getimagesize($_FILES["file"]['tmp_name']);
             $tipe=explode('/',$_FILES['file']['type']);
             $filename=date('Ymdhis').'.'.$tipe[1];
-            $lokasi=link_direktory().'file/barner/';
+            $lokasi=link_directory().'file/barner/';
             if($tipe[0]=='image' && $size<=8000000 && $ukuran[0]==1170 && $ukuran[1]==500){
             
                 if(move_uploaded_file($asli, $lokasi.$filename)){
@@ -160,7 +160,7 @@ class PengumumanController extends Controller
                 $ukuran=getimagesize($_FILES["file"]['tmp_name']);
                 $tipe=explode('/',$_FILES['file']['type']);
                 $filename=date('Ymdhis').'.'.$tipe[1];
-                $lokasi=link_direktory().'file/barner/';
+                $lokasi=link_directory().'file/barner/';
                 // if($tipe[0]=='image' && $size<=198640 && $ukuran[0]==1000 && $ukuran[1]==529){
                 if($tipe[0]=='image' && $size<=8000000 && $ukuran[0]==1170 && $ukuran[1]==500){
                     if(move_uploaded_file($asli, $lokasi.$filename)){
